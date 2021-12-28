@@ -3,7 +3,7 @@
 	class SecurityHelper
 	{
 		static $skey = "3917b28f82e9d0f630f48e89f2c91de7"; // you can change it
-		static $ciphering = "BF-CBC";
+		static $ciphering = "AES-128-CTR";
 		static $options = 0;
 			
 
@@ -33,8 +33,8 @@
 			}
 
 			$iv_length = openssl_cipher_iv_length(self::$ciphering);
-			$encryption_iv = random_bytes($iv_length);
-			$encryption_key = openssl_digest(php_uname(), 'MD5', TRUE);
+			$encryption_iv = '1234567891011121';
+			$encryption_key = 'JalanGajahMada29Tuban';
 
 			return openssl_encrypt($input, self::$ciphering, $encryption_key, self::$options, $encryption_iv);
 			
@@ -50,10 +50,9 @@
 			}
 
 			$iv_length = openssl_cipher_iv_length(self::$ciphering);
-			$encryption_iv = random_bytes($iv_length);
-			$decryption_iv = random_bytes($iv_length);
-			$decryption_key = openssl_digest(php_uname(), 'MD5', TRUE);
-			return openssl_decrypt($input, self::$ciphering, $decryption_key, self::$options, $encryption_iv);
+			$decryption_iv = '1234567891011121';
+			$decryption_key = 'JalanGajahMada29Tuban';
+			return openssl_decrypt($input, self::$ciphering, $decryption_key, self::$options, $decryption_iv);
 
 			//return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $skey, self::url_base64_decode($input), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
 		}
