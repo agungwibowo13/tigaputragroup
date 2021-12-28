@@ -5,7 +5,8 @@
 		static $skey = "3917b28f82e9d0f630f48e89f2c91de7"; // you can change it
 		static $ciphering = "AES-128-CTR";
 		static $options = 0;
-			
+		static $permitted_chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		static $digits = 16;
 
 		public static function safe_b64encode($string)
 		{
@@ -26,18 +27,17 @@
 			return base64_decode($data);
 		}
 
-		public static function encrypt($input, $encryption_key, $encryption_iv)
+		public static function encrypt($input, $encryption_key = '', $encryption_iv = '')
 		{
 			
-			if($skey == '') {
-				$skey = self::$skey;
+			if($encryption_key == '') {
+				$encryption_key = rand(pow(10, self::$digits-1), pow(10, self::$digits)-1);
+			}
+
+			if($encryption_iv == '') {
+				$encryption_iv = substr(str_shuffle(self::$permitted_chars), 0, 16);
 			}
 			
-
-			//$iv_length = openssl_cipher_iv_length(self::$ciphering);
-			//$encryption_iv = '1234567891011121';
-			//$encryption_key = 'JalanGajahMada29Tuban';
-
 			return openssl_encrypt($input, self::$ciphering, $encryption_key, self::$options, $encryption_iv);
 			
             // return md5($input);
@@ -45,18 +45,16 @@
 
 		}
 
-		public static function decrypt($input, $decryption_key, $decryption_iv)
+		public static function decrypt($input, $decryption_key = '', $decryption_iv = '')
 		{
 			
-			if($skey == '') {
-				$skey = self::$skey;
+			if($decryption_key == '') {
+				$decryption_key = rand(pow(10, self::$digits-1), pow(10, self::$digits)-1);
 			}
 
-			/*
-			$iv_length = openssl_cipher_iv_length(self::$ciphering);
-			$decryption_iv = '1234567891011121';
-			$decryption_key = 'JalanGajahMada29Tuban';
-			*/
+			if($decryption_iv == '') {
+				$decryption_iv = substr(str_shuffle(self::$permitted_chars), 0, 16);
+			}
 
 			return openssl_decrypt($input, self::$ciphering, $decryption_key, self::$options, $decryption_iv);
 
