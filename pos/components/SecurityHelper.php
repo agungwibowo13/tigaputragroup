@@ -31,11 +31,11 @@
 		{
 			
 			if($encryption_key == '') {
-				$encryption_key = rand(pow(10, self::$digits-1), pow(10, self::$digits)-1);
+				$encryption_key = 'G72FHT1O9UDJCAQB';
 			}
 
 			if($encryption_iv == '') {
-				$encryption_iv = substr(str_shuffle(self::$permitted_chars), 0, 16);
+				$encryption_iv = '3155634379930093';
 			}
 			
 			return openssl_encrypt($input, self::$ciphering, $encryption_key, self::$options, $encryption_iv);
@@ -49,11 +49,11 @@
 		{
 			
 			if($decryption_key == '') {
-				$decryption_key = rand(pow(10, self::$digits-1), pow(10, self::$digits)-1);
+				$decryption_key = 'G72FHT1O9UDJCAQB';
 			}
 
 			if($decryption_iv == '') {
-				$decryption_iv = substr(str_shuffle(self::$permitted_chars), 0, 16);
+				$decryption_iv = '3155634379930093';
 			}
 
 			return openssl_decrypt($input, self::$ciphering, $decryption_key, self::$options, $decryption_iv);
