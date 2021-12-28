@@ -10,7 +10,7 @@
 		    $pathInfo = pathinfo($currentPath); 
 		    $hostName = $_SERVER['HTTP_HOST']; 
 		    $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'https://';
-		    return $protocol.$hostName.$pathInfo['dirname'].'/';
+		    return $protocol.$hostName.$pathInfo['dirname'];
 		}
 
 		public static function baseConfig($is_frontend = FALSE) {
@@ -63,6 +63,6 @@
 		}
 
 		public static function getRootDirectory() {
-			return $_SERVER['DOCUMENT_ROOT'] . '/toko/';
+			return $_SERVER['DOCUMENT_ROOT'] . '/';
 		}
 	}
