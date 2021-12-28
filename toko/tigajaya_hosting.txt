@@ -1,0 +1,3 @@
+DB Name = u4870469_toko
+DB Pass = O[gdu^}C,Cg1
+DB User = u4870469_donni

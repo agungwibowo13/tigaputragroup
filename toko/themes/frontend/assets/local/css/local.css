@@ -1,0 +1,151 @@
+body {
+    background-color: #000;
+    color: #FFF;
+}
+
+.table > thead > tr > th {
+    color: #FFF;
+}
+
+input.form-control {
+    border-radius: 0;
+}
+
+input.variative-input {
+    color: #000;
+    text-align: center;
+}
+
+#loading_screen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99999;
+    background-color: rgba(255,255,255,0.6);
+}
+
+#loading_screen img {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    max-width: 150px;
+}
+
+.c-layout-header-fixed .c-layout-page {
+    margin-top: 0;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.c-layout-go2top {
+    display: none !important;
+}
+
+.m-b-0 {
+	margin-bottom: 0;
+}
+
+.m-t-0 {
+	margin-top: 0;
+}
+
+.edit-merchant {
+	position: absolute;
+	top: 5px;
+	right: 20px;
+}
+
+.c-content-product-2 .c-info {
+	height: 110px;
+    /*height: 92px;*/
+}
+
+/*.c-content-product-2 .c-info .c-title {
+	height: 100px;
+    overflow: hidden;
+}*/
+
+.c-shop-product-tab-1 .tab-content .c-product-desc {
+	padding-top: 0;
+}
+
+.c-product-image {
+    text-align: center;
+}
+
+.c-product-image img.product-image {
+    width: auto;
+    max-width: 90%;
+    max-height: 215px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-register-big {
+    font-size: 59px;
+    font-weight: 900;
+    font-family: serif;
+    font-style: italic;
+}
+
+/**
+ * select2
+ */
+
+.select2-container.search-product-cashier .select2-choice {
+    height: 35px;
+    line-height: 35px;
+    border-radius: 0;
+}
+
+.select2-container.search-product-cashier .select2-choice .select2-arrow {
+    display: none;
+}
+
+.select2-drop {
+    z-index: 99999 !important;
+}
+
+/**
+ * Bootstrap modal
+ */
+
+.modal-body {
+    padding: 0 !important;
+}
+
+@media (min-width: 992px) {
+  .container-fluid {
+    padding: 0 15px; } }
+
+@media (min-width: 992px) {
+    .c-layout-header .c-brand {
+        margin-top: 30px;
+    }
+
+    .c-page-on-scroll.c-layout-header-fixed .c-layout-header .c-brand {
+        margin-top: 10px;
+    }    
+}
+
+@media (max-width: 480px) {
+    .tp-bgimg.defaultimg {
+        background-size: contain !important;
+    }
+
+    .c-layout-revo-slider-4 {
+        min-height: 190px;
+    }
+
+    .c-layout-breadcrumbs-1.c-subtitle {
+        padding: 10px 0;
+    }
+}
