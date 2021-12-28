@@ -18,15 +18,15 @@
 
 			if($is_frontend) {
 				$config->theme_url 	= self::getBaseUrl().'themes/frontend/';
-				$config->site_title = 'Toko';
-				$config->copyright 	= '2017 © Toko';
+				$config->site_title = 'TIGAPUTRA POS';
+				$config->copyright 	= '2017 © TIGAPUTRA';
 				$config->no_image	= self::getBaseUrl().'uploads/no_image.png';
 				$config->no_banner	= self::getBaseUrl().'uploads/no_banner.png';
 				$config->display_per_page = 12;
 			} else {
 				$config->theme_url 	= self::getBaseUrl().'themes/backend/';
-				$config->site_title = 'Toko';
-				$config->copyright 	= '2017 © Toko';
+				$config->site_title = 'TIGAPUTRA POS';
+				$config->copyright 	= '2017 © TIGAPUTRA';
 				$config->avatar_url = self::getBaseUrl().'themes/backend/plugins/images/users/man.png';
 				$config->order_id_prefix = 'SO';
 				$config->no_image	= self::getBaseUrl().'uploads/no_image.png';
