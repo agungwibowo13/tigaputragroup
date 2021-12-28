@@ -3,9 +3,7 @@
 	class SecurityHelper
 	{
 		static $skey = "3917b28f82e9d0f630f48e89f2c91de7"; // you can change it
-
 		static $ciphering = "BF-CBC";
-		static $iv_length = openssl_cipher_iv_length($ciphering);
 		static $options = 0;
 			
 
@@ -34,7 +32,8 @@
 				$skey = self::$skey;
 			}
 
-			$encryption_iv = random_bytes(self::$iv_length);
+			$iv_length = openssl_cipher_iv_length(self::$ciphering);
+			$encryption_iv = random_bytes($iv_length);
 			$encryption_key = openssl_digest(php_uname(), 'MD5', TRUE);
 
 			return openssl_encrypt($input, self::$ciphering, $encryption_key, self::$options, $encryption_iv);
@@ -50,8 +49,9 @@
 				$skey = self::$skey;
 			}
 
-			$encryption_iv = random_bytes(self::$iv_length);
-			$decryption_iv = random_bytes(self::$iv_length);
+			$iv_length = openssl_cipher_iv_length(self::$ciphering);
+			$encryption_iv = random_bytes($iv_length);
+			$decryption_iv = random_bytes($iv_length);
 			$decryption_key = openssl_digest(php_uname(), 'MD5', TRUE);
 			return openssl_decrypt($input, self::$ciphering, $decryption_key, self::$options, $encryption_iv);
 
