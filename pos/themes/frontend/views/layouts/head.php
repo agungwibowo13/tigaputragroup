@@ -67,8 +67,8 @@
             <link href="<?= Snl::app()->config(TRUE)->theme_url ?>assets/plugins/select2-3.5.3/select2.css" rel="stylesheet" type="text/css"/>
             <script src="<?= Snl::app()->config(TRUE)->theme_url ?>assets/plugins/select2-3.5.3/select2.js" type="text/javascript"></script>
 
-            <link rel="shortcut icon" href="<?= Snl::app()->config(TRUE)->theme_url ?>assets/images/favicon.ico" type="image/x-icon">
-            <link rel="icon" href="<?= Snl::app()->config(TRUE)->theme_url ?>assets/images/favicon.ico" type="image/x-icon">
+            <link rel="shortcut icon" href="<?= Snl::app()->config(TRUE)->theme_url ?>assets/images/favicon-16x16.ico" type="image/x-icon">
+            <link rel="icon" href="<?= Snl::app()->config(TRUE)->theme_url ?>assets/images/favicon-16x16.ico" type="image/x-icon">
             <script type="text/javascript">
                 var totalPages = 1;
                 var visiblePages = 5;
