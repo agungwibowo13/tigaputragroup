@@ -28,11 +28,11 @@
 
 		public static function encrypt($input, $encryption_key, $encryption_iv)
 		{
-			/*
+			
 			if($skey == '') {
 				$skey = self::$skey;
 			}
-			*/
+			
 
 			//$iv_length = openssl_cipher_iv_length(self::$ciphering);
 			//$encryption_iv = '1234567891011121';
@@ -47,11 +47,12 @@
 
 		public static function decrypt($input, $decryption_key, $decryption_iv)
 		{
-			/*
+			
 			if($skey == '') {
 				$skey = self::$skey;
 			}
 
+			/*
 			$iv_length = openssl_cipher_iv_length(self::$ciphering);
 			$decryption_iv = '1234567891011121';
 			$decryption_key = 'JalanGajahMada29Tuban';
