@@ -1,6 +1,6 @@
 <?php
 	class User extends SnlActiveRecord {
-		public $user_id, $username, $password, $email, $firstname, $lastname, $status, $secret_key, $encryption_key, $encryption_iv, $created_on, $created_by, $updated_on, $updated_by, $is_deleted;
+		public $user_id, $username, $password, $email, $firstname, $lastname, $status, $secret_key, $created_on, $created_by, $updated_on, $updated_by, $is_deleted;
 		public $password_repeat;
 
 		public function __construct() {
@@ -34,8 +34,6 @@
 				'lastname' => 'Nama Belakang',
 				'status' => 'Status',
 				'secret_key' => 'Secret Key',
-				'encryption_key' => 'Encryption Key',
-				'encryption_iv' => 'Encryption IV',
 				'created_on' => 'Created On',
 				'created_by' => 'Created By',
 				'updated_on' => 'Updated On',
@@ -83,31 +81,20 @@
 
 		public function beforeSave() {
 			// $this->secret_key = md5($this->username);
-			$permitted_chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-			$digits = 16;
-
 			if($this->isNewRecord) {
 				$this->created_on = Snl::app()->dateNow();
 				$this->created_by = Snl::app()->user()->user_id;
 				$this->updated_on = Snl::app()->dateNow();
 				$this->updated_by = Snl::app()->user()->user_id;
 
-				$this->encryption_key = rand(pow(10, $digits-1), pow(10, $digits)-1);
-				$this->encryption_iv = substr(str_shuffle($permitted_chars), 0, 16);
-
-				$this->password = SecurityHelper::encrypt($this->password, $this->encryption_key, $this->encryption_iv);
+				$this->password = SecurityHelper::encrypt($this->password, $this->secret_key);
 			} else {
 				$this->updated_on = Snl::app()->dateNow();
 				$this->updated_by = Snl::app()->user()->user_id;
 
-				if($this->encryption_key == "" || $this->encryption_iv == "") {
-					$this->encryption_key = rand(pow(10, $digits-1), pow(10, $digits)-1);
-					$this->encryption_iv = substr(str_shuffle($permitted_chars), 0, 16);
-				}
-
 				$old_password = User::getOldPassword($this->user_id);
 				if($old_password != $this->password) {
-					$this->password = SecurityHelper::encrypt($this->password, $this->encryption_key, $this->encryption_iv);
+					$this->password = SecurityHelper::encrypt($this->password, $this->secret_key);
 				}
 			}
 		}
@@ -130,7 +117,7 @@
 			if($model == NULL) {
 				return FALSE;
 			} else {
-				if(SecurityHelper::decrypt($model->password, $model->encryption_key, $model->encryption_iv) == $this->password) {
+				if(SecurityHelper::decrypt($model->password, $model->secret_key) == $this->password) {
 					$this->generateSessionLogin($model);
 					return TRUE;
 				}
