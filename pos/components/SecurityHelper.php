@@ -4,7 +4,7 @@
 	{
 		static $skey = "3917b28f82e9d0f630f48e89f2c91de7"; // you can change it
 
-		static $ciphering = "DC-DCJ";
+		static $ciphering = "BF-CBC";
 		static $iv_length = openssl_cipher_iv_length($ciphering);
 		static $options = 0;
 			

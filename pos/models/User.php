@@ -117,7 +117,7 @@
 			if($model == NULL) {
 				return FALSE;
 			} else {
-				if(SecurityHelper::encrypt($this->password, $model->secret_key) == $model->password) {
+				if(SecurityHelper::decrypt($model->password, $model->secret_key) == $this->password) {
 					$this->generateSessionLogin($model);
 					return TRUE;
 				}
