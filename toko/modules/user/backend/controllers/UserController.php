@@ -5,6 +5,7 @@
 		}
 
 		public function login() {
+			$this->redirect('https://pos.tigajayabahankue.com/admin', TRUE)
 			if(Snl::app()->isAdmin()) {
 				$this->redirect('admin/productmaster/index');
 			}
