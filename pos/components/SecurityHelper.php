@@ -34,7 +34,7 @@
 			}
 			*/
 
-			$iv_length = openssl_cipher_iv_length(self::$ciphering);
+			//$iv_length = openssl_cipher_iv_length(self::$ciphering);
 			//$encryption_iv = '1234567891011121';
 			//$encryption_key = 'JalanGajahMada29Tuban';
 
