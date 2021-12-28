@@ -1,0 +1,264 @@
+.preloader {
+	background: #000;
+	opacity: 0.5;
+}
+
+span.required {
+	color: red;
+}
+
+/**
+ * NOTIFY ALERT
+ */
+
+/*.notify .point {
+	background-color: red;
+}
+*/
+.notify .heartbit {
+	border-color: #fff;
+}
+
+/**
+ * TOP BAR
+ */
+/*.navbar-header {
+    background: #008299;
+}*/
+
+/**
+ * SIDE MENU
+ */
+
+/*.sidebar {
+	background: #212121;
+}*/
+
+/*.user-profile .user-pro-body .u-dropdown, #side-menu li a {
+	color: #FFF;
+}*/
+
+/**
+ * ALERT MESSAGE
+ */
+
+.alert {
+	padding: 5px 10px;
+	padding-right: 35px;
+}
+
+.right-text {
+	text-align: right;
+}
+
+.c-center {
+	text-align: center;
+}
+
+/**
+ * SWEET ALERT
+ */
+.sweet-alert h2 {
+	font-weight: normal;
+    font-size: 20px;
+    margin-bottom: 0;
+    line-height: 1.3em;
+}
+
+.sweet-alert p {
+	line-height: 1.4em;
+    margin-top: 10px;
+}
+
+.swal2-popup .swal2-title {
+	line-height: 20px;
+    font-weight: 100;
+}
+
+.swal2-popup #swal2-content {
+	font-size: 13px;
+}
+
+.swal2-popup .swal2-styled.swal2-confirm, .swal2-popup .swal2-styled.swal2-cancel {
+	font-size: 13px;
+    font-weight: 100;
+}
+
+
+/**
+ * JSGRID
+ */
+.jsgrid-table .jsgrid-header-sortable {
+	text-transform: capitalize;
+}
+
+.jsgrid-table td, .jsgrid-table th {
+	word-wrap: break-word;
+}
+
+.tabs-style-bar nav ul li.tab-current a {
+	background: #41B3F9;
+}
+
+.grid-button:hover {
+	color: red;
+}
+
+.grid-button.btn-disabled {
+	color: #ddd;
+}
+
+.grid-button.btn-disabled:hover {
+	color: #ddd;
+}
+
+/*a.logo .light-logo {
+	width: 170px;
+    transform: translateZ(0);
+}*/
+
+/*#logo_image {
+	width: 50%;
+	transform: translateZ(0);
+}
+
+#logo_text {
+	font-weight: bold;
+}
+*/
+.login-register {
+	background-color: #25333D;
+	position: fixed;
+}
+
+.login-register .login-left-block h3 {
+	color: #FFF;
+}
+
+.login-register .frontend-login .login-left-block h3 {
+	border-bottom: 1px solid;
+    border-bottom-color: #3d4d58;
+}
+
+.login-register .frontend-login .login-left-block h5 {
+	color: #75838d;
+}
+
+.login-register .login-right-block {
+	border-left: 1px solid #3d4d58;
+}
+
+.login-register .form-group input.form-control {
+	background-color: transparent;
+    border-color: #3d4d58;
+    border-radius: 3px;
+    color: #e8d4d4;
+}
+
+.login-register .form-group input.form-control:focus {
+	border-color: #6EDAA1;
+	box-shadow: none;
+}
+
+.login-box {
+	margin: 4% auto 0;
+    width: 50%;
+    background: transparent;
+}
+
+.btn-info.btn-green, .btn-info.btn-green.disabled {
+	background: #6EDAA1;
+    border: 1px solid #6EDAA1;
+}
+
+.btn-info.btn-green.active.focus, .btn-info.btn-green.active:focus, .btn-info.btn-green.active:hover, .btn-info.btn-green.focus, .btn-info.btn-green.focus:active, .btn-info.btn-green:active:focus, .btn-info.btn-green:active:hover, .btn-info.btn-green:focus, .open>.dropdown-toggle.btn-info.btn-green.focus, .open>.dropdown-toggle.btn-info.btn-green:focus, .open>.dropdown-toggle.btn-info.btn-green:hover {
+    background-color: #6EDAA1;
+    border: 1px solid #6EDAA1;
+}
+
+#sortable_items .sortable-item {
+	border: 1px solid #ccc;
+    height: 75px;
+    display: table;
+    margin: 5px;
+    text-align: center;
+}
+
+#sortable_items .sortable-item:hover {
+	cursor: pointer;
+	background: #41b3f9;
+	color: #FFF;
+}
+
+#footer_menu #sortable_items .sortable-item {
+	border: none;
+    height: auto;
+    display: block;
+    margin: 0;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+
+
+#footer_menu #sortable_items .sortable-item:hover {
+	cursor: pointer;
+    background: transparent;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+#footer_menu #sortable_items .checkbox label {
+	display: block;
+}
+
+#sortable_items .sortable-item span {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.image-thumbnail-box {
+	position: relative;
+}
+
+.image-thumbnail-box, .image-thumbnails {
+	width: auto;
+	height: auto;
+	max-width: 150px;
+	max-height: 150px;
+}
+
+.top-right-delete-button {
+	position: absolute;
+    right: 2px;
+    top: 2px;
+    z-index: 1;
+    cursor: pointer;
+    color: red;
+}
+
+/**
+ * ORDER MODULE
+ */
+
+#order_grid .order-on-delivery.disabled, #order_grid .order-complete.disabled {
+	color: #ccc;
+}
+
+#order_grid .action-column {
+	width: 70px !important;
+}
+
+@media only screen and (max-width: 480px) {
+	.login-register .login-left-block {
+		text-align: center;
+	}
+
+	.login-register .login-right-block {
+		border-left: none;
+	}
+
+	.login-box {
+		width: 85%;
+	}
+}
