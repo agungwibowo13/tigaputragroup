@@ -26,15 +26,17 @@
 			return base64_decode($data);
 		}
 
-		public static function encrypt($input, $skey = '')
+		public static function encrypt($input, $encryption_key, $encryption_iv)
 		{
+			/*
 			if($skey == '') {
 				$skey = self::$skey;
 			}
+			*/
 
 			$iv_length = openssl_cipher_iv_length(self::$ciphering);
-			$encryption_iv = '1234567891011121';
-			$encryption_key = 'JalanGajahMada29Tuban';
+			//$encryption_iv = '1234567891011121';
+			//$encryption_key = 'JalanGajahMada29Tuban';
 
 			return openssl_encrypt($input, self::$ciphering, $encryption_key, self::$options, $encryption_iv);
 			
@@ -43,8 +45,9 @@
 
 		}
 
-		public static function decrypt($input, $skey = '')
+		public static function decrypt($input, $decryption_key, $decryption_iv)
 		{
+			/*
 			if($skey == '') {
 				$skey = self::$skey;
 			}
@@ -52,6 +55,8 @@
 			$iv_length = openssl_cipher_iv_length(self::$ciphering);
 			$decryption_iv = '1234567891011121';
 			$decryption_key = 'JalanGajahMada29Tuban';
+			*/
+
 			return openssl_decrypt($input, self::$ciphering, $decryption_key, self::$options, $decryption_iv);
 
 			//return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $skey, self::url_base64_decode($input), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)));
