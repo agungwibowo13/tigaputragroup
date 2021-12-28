@@ -6,7 +6,7 @@
 
 		public function index() {
 		    // $this->redirect('default/cashier');
-		    $this->redirect('https://pos.tigajayabahankue.com/', TRUE)
+		    $this->redirect('https://pos.tigajayabahankue.com/', TRUE);
 			return $this->render('index');
 		}
 
