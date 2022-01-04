@@ -4,6 +4,12 @@
 		const DB_USERNAME = 'u4870469_donni';
 		const DB_PASSWORD = 'O[gdu^}C,Cg1';
 		const DB_NAME = 'u4870469_toko';
+		
+		/*
+		const DB_USERNAME = 'root';
+		const DB_PASSWORD = '';
+		const DB_NAME = 'pos_tigaputra';
+		*/
 
 		public static function getBaseUrl() {
 			$currentPath = $_SERVER['PHP_SELF']; 
@@ -11,6 +17,7 @@
 		    $hostName = $_SERVER['HTTP_HOST']; 
 		    $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'https://';
 		    return $protocol.$hostName.$pathInfo['dirname'];
+		    // return $protocol.$hostName.$pathInfo['dirname'].'/';
 		}
 
 		public static function baseConfig($is_frontend = FALSE) {
@@ -64,5 +71,6 @@
 
 		public static function getRootDirectory() {
 			return $_SERVER['DOCUMENT_ROOT'] . '/';
+			// return $_SERVER['DOCUMENT_ROOT'] . '/tigaputragroup/';
 		}
 	}
