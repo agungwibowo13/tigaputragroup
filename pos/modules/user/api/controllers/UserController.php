@@ -11,7 +11,7 @@
 					$model = User::model()->findByPk($model->user_id);
 
 					$last_login = UserApiLoginHistory::model()->findByAttribute(array(
-						'condition' => 'user_id = :user_id AND clock_out = "0000-00-00 00:00:00" ORDER BY clock_in DESC',
+						'condition' => 'user_id = :user_id AND clock_out IS NULL ORDER BY clock_in DESC',
 						'params'	=> array(':user_id' => $model->user_id)
 					));
 
