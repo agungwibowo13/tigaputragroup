@@ -185,8 +185,8 @@
 				'username' 		=> $this->username,
 				'email'			=> $this->email,
 				'firstname'		=> $this->firstname,
-				'encryption_key'=> $this->encryption_key,
-				'encryption_iv'	=> $this->encryption_iv,
+				//'encryption_key'=> $this->encryption_key,
+				//'encryption_iv'	=> $this->encryption_iv,
 			);
 
 			return $result;
