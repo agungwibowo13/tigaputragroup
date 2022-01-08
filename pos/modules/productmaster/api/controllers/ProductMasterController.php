@@ -1,28 +1,42 @@
 <?php
 	class ProductMasterController extends ApiController {
-		public function getallproducts() {
-			$products = new ProductMaster;
-			$products = ProductMaster::model()->findByAll()
+		public function productsearch() {
+			if($this->request_type == 'GET') {
+				$data 		 = array();
+				$keyword 	 = isset($this->params['keyword']) ? $this->params['keyword'] : 0;
+				//$page 		 = isset($this->params['page']) ? $this->params['page'] : 1;
+				//$display_per_page = 10;
 
-			if($products !== NULL) {
-				foreach ($products as $product) {
-					$margin_percentage = round((($product->price - $product->hpp) / $product->hpp) * 100, 2);
-					$data[] = [
-						'product_master_id' => $product->product_master_id,
-						'name' => ucwords($product->name),
-						'hpp' => Snl::app()->formatPrice($product->hpp),
-						'price' => Snl::app()->formatPrice($product->price),
-						'grosir' => Snl::app()->formatPrice($product->grosir),
-						'margin_percentage' => $margin_percentage,
-						'remarks' => $product->remarks,
-						'updated_on' => Snl::app()->dateTimeFormat($product->updated_on),
-						'updated_by' => $product->updated_by,
-					];
+				//$offset 	 = $display_per_page * ($page - 1);
+				//$pagination  = ' LIMIT '.$display_per_page.' OFFSET '.$offset;
+				$order 		 = ' ORDER BY tbl_product_master.rating DESC';
+
+				//$total_products = Product::model()->searchCount($keyword);
+				//$total_pages = ceil($total_products / $display_per_page);
+
+				$products = ProductMaster::model()->search($keyword, $order);
+
+				if($products != NULL) {
+					foreach ($products as $product) {
+						$data[] = array(
+							'product_master_id' => $product->product_master_id,
+							'name' 	=> $product->name,
+							'price' => (int)$product->price,
+						);
+					}
 				}
 
-				$this->renderJSON($data);
+
+				$result = array(
+					'status' 	=> 200,
+					'product'	=> $data,
+				);
+
+				$this->renderJSON($result);
+			} else {
+				$this->renderErrorMessage(405, 'MethodNotAllowed');
 			}
-			
 		}
 
+		
 	}

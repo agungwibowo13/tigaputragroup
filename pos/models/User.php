@@ -160,4 +160,35 @@
 
 			return '';
 		}
+
+		public function validateApiLogin($generate_session = FALSE) {
+			$model = User::model()->findByAttribute(array(
+				'condition' => 'username = :username AND status = :status AND is_deleted = 0',
+				'params'	=> array(':username' => $this->username, ':status' => 1)
+			));
+
+			if($model == NULL) {
+				return 0;
+			} else {
+				if(SecurityHelper::decrypt($model->password, $model->encryption_key, $model->encryption_iv) == $this->password) {
+					$this->user_id = $model->user_id;
+					return 1;
+				}
+			}
+
+			return 0;
+		}
+
+		public function getApiLoginInformation($with_address = TRUE) {
+			$result = array(
+				'user_id'		=> $this->user_id,
+				'username' 		=> $this->username,
+				'email'			=> $this->email,
+				'firstname'		=> $this->firstname,
+				'encryption_key'=> $this->encryption_key,
+				'encryption_iv'	=> $this->encryption_iv,
+			);
+
+			return $result;
+		}
 	}

@@ -6,7 +6,7 @@
 		public $require_valid_token = TRUE;
 		public $valid_user_token = TRUE;
 		public $user_token = '';
-		public $vendor_id = 0;
+		public $user_id = 0;
 		public $action;
 
 		public function init() {
@@ -43,12 +43,12 @@
 				$this->valid_user_token = FALSE;
 			} else {
 				$log_id = (int) SecurityHelper::decrypt($this->user_token);
-				$log = VendorApiLoginHistory::model()->findByPk($log_id);
+				$log = UserApiLoginHistory::model()->findByPk($log_id);
 				if($log == NULL) {
 					$this->valid_user_token = FALSE;
 				} else {
 					if($log->clock_out == '0000-00-00 00:00:00' || strtotime($log->clock_out) == '') {
-						$this->vendor_id = $log->vendor_id;
+						$this->user_id = $log->user_id;
 						$this->valid_user_token = TRUE;
 					} else {
 						$this->valid_user_token = FALSE;

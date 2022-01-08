@@ -194,3 +194,12 @@ ALTER TABLE `tbl_invoice` ADD `profit` DECIMAL(16,2) DEFAULT 0 AFTER `total`;
 ALTER TABLE `tbl_product_master` ADD `rounded_price` INT(1) DEFAULT 0 AFTER `price`;
 
 ALTER TABLE `tbl_product_master` ADD `rating` INT(11) DEFAULT 0 AFTER `remarks`;
+
+CREATE TABLE IF NOT EXISTS `tbl_user_api_login_history` (
+	`api_login_history_id` INT(11) NOT NULL AUTO_INCREMENT,
+	`user_id` INT(11),
+	`clock_in` DATETIME DEFAULT NULL,
+	`clock_out` DATETIME DEFAULT NULL,
+	PRIMARY KEY (`api_login_history_id`),
+	FOREIGN KEY(`user_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

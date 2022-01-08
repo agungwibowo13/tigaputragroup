@@ -100,4 +100,16 @@
 		    $price = ($n + $m) * 1000;
 		    return $price;
 		}
+
+		public function search($keyword, $order, $filter = array()) {
+			$product = new ProductMaster;
+			$category_condition = '';
+			$stock_condition = '';
+
+			$product = $product->findAll(array(
+				'condition' => 'tbl_product_master.is_deleted = 0 AND (tbl_product_master.name LIKE "%'.$keyword.'%" OR tbl_product_master.price LIKE "%'.$keyword.'%")'
+			));
+
+			return $product;
+		}
 	}
