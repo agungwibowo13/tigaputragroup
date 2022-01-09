@@ -10,6 +10,32 @@
 		}
 
 		public function cashier() {
+			/*
+			$products = array();
+			$data = array(
+				'product_id' => 1,
+				'qty' 		=> 2,
+				'price' 	=> 21500,
+			);
+			array_push($products, $data);
+
+			$data = array(
+				'product_id' => 35,
+				'qty' 		=> 2,
+				'price' 	=> 32000,
+			);
+			array_push($products, $data);
+
+			$data = array(
+				'product_id' => 78,
+				'qty' 		=> 1,
+				'price' 	=> 42000,
+			);
+			array_push($products, $data);
+
+			echo json_encode($products);
+			*/
+			
 			return $this->render('cashier');
 		}
 
