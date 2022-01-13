@@ -37,6 +37,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="col-md-12"><?= $model->getLabel('is_manual_product', TRUE); ?></label>
+                            <div class="col-md-12">
+                                <?= Snl::chtml()->activeDropdown($model, 'is_manual_product', ['0'=>'No','1'=>'Yes']) ?>
+                            </div>
+                        </div>
+
                          <div class="form-group">
                             <label class="col-md-12"><?= $model->getLabel('remarks', TRUE); ?></label>
                             <div class="col-md-12">

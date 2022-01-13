@@ -1,6 +1,6 @@
 <?php
 	class InvoiceDetail extends SnlActiveRecord {
-		public $invoice_detail_id, $invoice_id, $product_master_id, $original_price, $price, $qty, $profit;
+		public $invoice_detail_id, $invoice_id, $product_master_id, $product_name, $original_price, $price, $qty, $profit;
 		
 		public function __construct() {
 		    $this->classname = 'InvoiceDetail';
@@ -22,6 +22,7 @@
 				'invoice_detail_id' => 'Invoice Detail Id',
 				'invoice_id' => 'Invoice Id',
 				'product_master_id' => 'Product Master Id',
+				'product_name' => 'Product Name',
 				'original_price' => 'Original Price',
 				'price' => 'Price',
 				'qty' => 'Qty',

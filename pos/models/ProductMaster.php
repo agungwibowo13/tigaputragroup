@@ -1,6 +1,6 @@
 <?php
 	class ProductMaster extends SnlActiveRecord {
-		public $product_master_id, $name, $hpp, $price, $rounded_price, $remarks, $rating, $created_on, $created_by, $updated_on, $updated_by, $is_deleted;
+		public $product_master_id, $name, $hpp, $price, $rounded_price, $remarks, $rating, $is_manual_product, $created_on, $created_by, $updated_on, $updated_by, $is_deleted;
 		
 		public function __construct() {
 		    $this->classname = 'ProductMaster';
@@ -25,7 +25,9 @@
 				'name' => 'Nama Barang',
 				'hpp' => 'HPP',
 				'price' => 'Harga Satuan',
-				'rounded_price' => 'Bulatkan Harga',
+				'rounded_price' => 'Bulatkan Harga?',
+				'rating' => 'Rating',
+				'is_manual_product' => 'Produk Manual?',
 				'remarks' => 'Keterangan',
 				'created_on' => 'Created On',
 				'created_by' => 'Created By',

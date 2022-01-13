@@ -203,3 +203,6 @@ CREATE TABLE IF NOT EXISTS `tbl_user_api_login_history` (
 	PRIMARY KEY (`api_login_history_id`),
 	FOREIGN KEY(`user_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `tbl_product_master` ADD `is_manual_product` INT(1) DEFAULT 0 AFTER `rating`;
+ALTER TABLE `tbl_invoice_detail` ADD `product_name` VARCHAR(100) DEFAULT NULL AFTER `product_master_id`;

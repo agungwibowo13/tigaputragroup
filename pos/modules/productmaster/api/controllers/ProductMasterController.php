@@ -65,10 +65,36 @@
 								foreach ($data as $key => $product) {
 									//$profit = $value->subtotal - ($value->original_price * $value->qty);
 									//$total_profit += $profit;
+									$product_id = $product->product_id;
+									if($product_id == 0) {
+										$model = ProductMaster::model()->findByAttribute(array(
+											'condition' => 'is_manual_product = :is_manual_product AND is_deleted = 0',
+											'params'	=> array(':is_manual_product' => 1)
+										));
+
+										if($model == NULL) {
+											$model = new ProductMaster();
+											$model->name = $product->name;
+											$model->hpp = 0;
+											$model->price = 0;
+											$model->is_manual_product = 1;
+											$model->created_by = $this->user_id;
+											$model->created_on = date('Y-m-d H:i:s');
+											$model->updated_by = $this->user_id;
+											$model->updated_on = date('Y-m-d H:i:s');
+											if($model->save()) {
+												$product_id = $model->product_master_id;	
+											}
+										} else {
+											$product_id = $model->product_master_id;
+										}
+
+									}
 
 									$detail = new InvoiceDetail();
 									$detail->invoice_id 		= $invoice->invoice_id;
-									$detail->product_master_id 	= $product->product_id;
+									$detail->product_master_id 	= $product_id;
+									$detail->product_name 		= $product->name;
 									$detail->price 	= $product->price;
 									$detail->qty 	= $product->qty;
 									
