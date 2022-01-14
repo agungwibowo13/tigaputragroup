@@ -74,9 +74,9 @@
 
 										if($model == NULL) {
 											$model = new ProductMaster();
-											$model->name = $product->name;
-											$model->hpp = 0;
-											$model->price = 0;
+											$model->name = 'Manual Product';
+											$model->hpp = $product->price;
+											$model->price = $product->price;
 											$model->is_manual_product = 1;
 											$model->created_by = $this->user_id;
 											$model->created_on = date('Y-m-d H:i:s');
