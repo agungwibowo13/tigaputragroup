@@ -20,7 +20,7 @@
 					foreach ($products as $product) {
 						$data[] = array(
 							'product_master_id' => $product->product_master_id,
-							'name' 	=> $product->name,
+							'name' 	=> ucwords($product->name),
 							'price' => (int)$product->price,
 						);
 					}
@@ -139,4 +139,88 @@
 			}
 		}
 		
+		public function getinvoice() {
+			if($this->valid_user_token) {
+				if($this->request_type == 'GET') {
+					$date = isset($this->params['date']) ? $this->params['date'] : NULL;
+					$result = array(
+						'status' 	=> 200,
+						'data'		=> NULL,
+					);
+
+					if($date != NULL) {
+						$invoices = Invoice::model()->findAll(array(
+							'condition' => 'date(created_on) = :date AND is_deleted = 0 ORDER BY invoice_id DESC',
+							'params'	=> array(':date' => date('Y-m-d', strtotime($date)))
+						));
+
+						if($invoices != NULL) {
+							foreach ($invoices as $invoice) {
+								$user = User::model()->findByPk($invoice->created_by);
+								$data[] = array(
+									'invoice_id' => $invoice->invoice_id,
+									'invoice_date' 	=> date('d M Y H:i:s', strtotime($invoice->created_on)),
+									'total' => (int)$invoice->total,
+									'created_by' => $user->firstname,
+								);
+							}
+
+							$result = array(
+								'status' 	=> 200,
+								'data'		=> $data,
+							);
+						}
+					}
+					
+					$this->renderJSON($result);
+					
+				} else {
+					$this->renderErrorMessage(405, 'MethodNotAllowed');
+				}
+			} else {
+				$this->renderInvalidUserToken();
+			}
+		}
+
+		public function getinvoicedetail() {
+			if($this->valid_user_token) {
+				if($this->request_type == 'GET') {
+					$invoice_id = isset($this->params['invoice_id']) ? $this->params['invoice_id'] : NULL;
+					$result = array(
+						'status' 	=> 200,
+						'data'		=> NULL,
+					);
+
+					if($invoice_id != NULL) {
+						$model = InvoiceDetail::model()->findAll(array(
+							'condition' => 'invoice_id = :invoice_id',
+							'params'	=> array(':invoice_id' => $invoice_id)
+						));
+
+						if($model != NULL) {
+							foreach ($model as $product) {
+								$data[] = array(
+									'product_id'	=> $product->product_master_id,
+									'name' 			=> ucwords($product->product_name),
+									'price' 		=> (int)$product->price,
+									'qty'	 		=> (int)$product->qty,
+								);
+							}
+
+							$result = array(
+								'status' 	=> 200,
+								'data'		=> $data,
+							);
+						}
+					}
+					
+					$this->renderJSON($result);
+					
+				} else {
+					$this->renderErrorMessage(405, 'MethodNotAllowed');
+				}
+			} else {
+				$this->renderInvalidUserToken();
+			}
+		}
 	}
