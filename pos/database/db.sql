@@ -206,3 +206,5 @@ CREATE TABLE IF NOT EXISTS `tbl_user_api_login_history` (
 
 ALTER TABLE `tbl_product_master` ADD `is_manual_product` INT(1) DEFAULT 0 AFTER `rating`;
 ALTER TABLE `tbl_invoice_detail` ADD `product_name` VARCHAR(100) DEFAULT NULL AFTER `product_master_id`;
+
+ALTER TABLE `tbl_invoice` ADD `payment` DECIMAL(16,2) DEFAULT 0 AFTER `profit`;

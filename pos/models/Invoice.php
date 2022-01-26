@@ -1,6 +1,6 @@
 <?php
 	class Invoice extends SnlActiveRecord {
-		public $invoice_id, $invoice_number, $invoice_date, $total, $profit, $created_on, $created_by, $updated_on, $updated_by, $is_deleted;
+		public $invoice_id, $invoice_number, $invoice_date, $total, $profit, $payment, $created_on, $created_by, $updated_on, $updated_by, $is_deleted;
 		
 		public function __construct() {
 		    $this->classname = 'Invoice';
@@ -24,6 +24,7 @@
 				'invoice_date' => 'Invoice Date',
 				'total' => 'Total',
 				'profit' => 'Profit',
+				'payment' => 'Payment',
 				'created_on' => 'Created On',
 				'created_by' => 'Created By',
 				'updated_on' => 'Updated On',

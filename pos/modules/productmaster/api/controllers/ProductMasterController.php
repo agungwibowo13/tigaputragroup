@@ -45,6 +45,7 @@
 			if($this->valid_user_token) {
 				if($this->request_type == 'POST') {
 					$total = isset($this->params['total']) ? $this->params['total'] : 0;
+					$payment = isset($this->params['payment']) ? $this->params['payment'] : 0;
 					$data = isset($this->params['data']) ? $this->params['data'] : NULL;
 					
 					if($data != NULL) {
@@ -56,6 +57,7 @@
 							$invoice = new Invoice();
 							$invoice->invoice_date = date('Y-m-d H:i:s');
 							$invoice->total = $total;
+							$invoice->payment = $payment;
 							$invoice->created_by = $this->user_id;
 							$invoice->created_on = date('Y-m-d H:i:s');
 							$invoice->updated_by = $this->user_id;
@@ -113,7 +115,8 @@
 
 								if($product_count == $product_submitted) {
 									$result = array(
-										'status' => 200
+										'status' => 200,
+										'invoice_id' => $invoice->invoice_id,
 									);
 
 									$this->renderJSON($result);
@@ -161,6 +164,7 @@
 									'invoice_id' => $invoice->invoice_id,
 									'invoice_date' 	=> date('d M Y H:i:s', strtotime($invoice->created_on)),
 									'total' => (int)$invoice->total,
+									'payment' => (int)$invoice->payment,
 									'created_by' => $user->firstname,
 								);
 							}
