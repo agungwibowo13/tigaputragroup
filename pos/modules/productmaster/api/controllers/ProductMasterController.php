@@ -92,7 +92,7 @@
 										}
 
 									} else {
-										$model = Product::model()->findByPk($product_id);
+										$model = ProductMaster::model()->findByPk($product_id);
 										$profit = ($product->price * $product->qty) - ($model->hpp * $product->qty);
 										$total_profit += $profit;
 									}
