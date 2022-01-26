@@ -59,6 +59,11 @@
                 type: "text",
                 align: "right",
             }, {
+                title: "Margin",
+                name: "margin",
+                type: "text",
+                align: "right",
+            }, {
                 type: "control",
                 itemTemplate: function(value, item) {
                     var $view = "<a href='"+baseUrl+"admin/invoice/view?id="+item.invoice_id+"' title='View'><i class='glyphicon glyphicon-eye-open'></i></a>&nbsp;";
