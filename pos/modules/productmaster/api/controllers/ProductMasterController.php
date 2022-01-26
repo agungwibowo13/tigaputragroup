@@ -47,6 +47,7 @@
 					$total = isset($this->params['total']) ? $this->params['total'] : 0;
 					$payment = isset($this->params['payment']) ? $this->params['payment'] : 0;
 					$data = isset($this->params['data']) ? $this->params['data'] : NULL;
+					$total_profit = 0;
 					
 					if($data != NULL) {
 						if($this->isJSON($data)) {
@@ -65,9 +66,8 @@
 
 							if($invoice->save()) {
 								foreach ($data as $key => $product) {
-									//$profit = $value->subtotal - ($value->original_price * $value->qty);
-									//$total_profit += $profit;
 									$product_id = $product->product_id;
+
 									if($product_id == 0) {
 										$model = ProductMaster::model()->findByAttribute(array(
 											'condition' => 'is_manual_product = :is_manual_product AND is_deleted = 0',
@@ -91,6 +91,10 @@
 											$product_id = $model->product_master_id;
 										}
 
+									} else {
+										$model = Product::model()->findByPk($product_id);
+										$profit = ($product->price * $product->qty) - ($model->hpp * $product->qty);
+										$total_profit += $profit;
 									}
 
 									$detail = new InvoiceDetail();
@@ -110,8 +114,8 @@
 									}
 								}
 
-								//$invoice->profit = $total_profit;
-								//$invoice->save();
+								$invoice->profit = $total_profit;
+								$invoice->save();
 
 								if($product_count == $product_submitted) {
 									$result = array(
