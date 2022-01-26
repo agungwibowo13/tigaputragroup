@@ -74,11 +74,17 @@
 
 			if($invoices !== NULL) {
 				foreach ($invoices as $invoice) {
+					$margin = 0;
+					if($invoice->profit != NULL && $invoice->profit > 0) {
+						$margin = round(($invoice->profit / $invoice->total) * 100, 2);	
+					}
+					
 					$data[] = [
 						'invoice_id' => $invoice->invoice_id,
 						'invoice_number' => Snl::app()->generateInvoiceNo($invoice->invoice_id),
 						'total' => Snl::app()->formatPrice($invoice->total),
 						'profit' => Snl::app()->formatPrice($invoice->profit),
+						'margin' => $margin,
 						'invoice_date' => Snl::app()->dateTimeFormat($invoice->invoice_date)
 					];
 				}
