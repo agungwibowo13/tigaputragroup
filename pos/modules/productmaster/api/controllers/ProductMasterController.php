@@ -22,6 +22,7 @@
 							'product_master_id' => $product->product_master_id,
 							'name' 	=> ucwords($product->name),
 							'price' => (int)$product->price,
+							'is_rounded_price' => $product->rounded_price,
 						);
 					}
 				}
