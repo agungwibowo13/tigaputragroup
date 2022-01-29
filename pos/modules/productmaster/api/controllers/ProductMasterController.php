@@ -208,11 +208,13 @@
 
 						if($model != NULL) {
 							foreach ($model as $product) {
+								$product_model = ProductMaster::model()->findByPk($product->product_master_id);
 								$data[] = array(
 									'product_id'	=> $product->product_master_id,
 									'name' 			=> ucwords($product->product_name),
 									'price' 		=> (int)$product->price,
 									'qty'	 		=> (int)$product->qty,
+									'is_rounded_price' => $product_model->rounded_price,
 								);
 							}
 
