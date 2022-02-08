@@ -213,7 +213,7 @@
 									'product_id'	=> $product->product_master_id,
 									'name' 			=> ucwords($product->product_name),
 									'price' 		=> (int)$product->price,
-									'qty'	 		=> (int)$product->qty,
+									'qty'	 		=> $product->qty,
 									'is_rounded_price' => $product_model->rounded_price,
 								);
 							}
