@@ -164,7 +164,10 @@
 
 			$invoice = new Invoice();
 			$invoice->invoice_date = date('Y-m-d H:i:s');
-			// $invoice->invoice_date = '2019-07-20 10:00:00';
+			$invoice->created_by = Snl::app()->user()->user_id;
+			$invoice->created_on = date('Y-m-d H:i:s');
+			$invoice->updated_by = Snl::app()->user()->user_id;
+			$invoice->updated_on = date('Y-m-d H:i:s');
 			$invoice->total = $total;
 			if($invoice->save()) {
 				foreach ($data as $key => $value) {
