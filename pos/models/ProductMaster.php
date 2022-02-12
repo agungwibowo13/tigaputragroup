@@ -109,7 +109,7 @@
 			$stock_condition = '';
 
 			$product = $product->findAll(array(
-				'condition' => 'tbl_product_master.is_deleted = 0 AND (tbl_product_master.name LIKE "%'.$keyword.'%" OR tbl_product_master.price LIKE "%'.$keyword.'%"'.$order.')'
+				'condition' => 'tbl_product_master.is_deleted = 0 AND (tbl_product_master.name LIKE "%'.$keyword.'%" OR tbl_product_master.price LIKE "%'.$keyword.'%")'.$order
 			));
 
 			return $product;
