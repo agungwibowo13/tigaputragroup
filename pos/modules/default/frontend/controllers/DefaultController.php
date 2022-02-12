@@ -169,14 +169,18 @@
 			$invoice->updated_by = Snl::app()->user()->user_id;
 			$invoice->updated_on = date('Y-m-d H:i:s');
 			$invoice->total = $total;
+			$invoice->payment = $total;
 			if($invoice->save()) {
 				foreach ($data as $key => $value) {
 					$profit = $value->subtotal - ($value->original_price * $value->qty);
 					$total_profit += $profit;
 
+					$product = ProductMaster::model()->findByPk($value->product_id);
+
 					$detail = new InvoiceDetail();
 					$detail->invoice_id 		= $invoice->invoice_id;
 					$detail->product_master_id 	= $value->product_id;
+					$detail->product_name 		= $product->name;
 					$detail->original_price 	= $value->original_price;
 					$detail->price 	= $value->price;
 					$detail->qty 	= $value->qty;
