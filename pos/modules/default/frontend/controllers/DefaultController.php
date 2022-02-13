@@ -164,9 +164,9 @@
 
 			$invoice = new Invoice();
 			$invoice->invoice_date = date('Y-m-d H:i:s');
-			$invoice->created_by = Snl::app()->user()->user_id;
+			$invoice->created_by = Snl::app()->user()->user_id == NULL ? 1 : Snl::app()->user()->user_id;
 			$invoice->created_on = date('Y-m-d H:i:s');
-			$invoice->updated_by = Snl::app()->user()->user_id;
+			$invoice->updated_by = Snl::app()->user()->user_id == NULL ? 1 : Snl::app()->user()->user_id;
 			$invoice->updated_on = date('Y-m-d H:i:s');
 			$invoice->total = $total;
 			$invoice->payment = $total;
