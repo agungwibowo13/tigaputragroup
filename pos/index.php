@@ -1,6 +1,7 @@
 <?php
 	ob_start();
 	session_start();
+	date_default_timezone_set("Asia/Jakarta");
 	
 	$module = isset($_GET['module']) ? strtolower($_GET['module']) : 'default';
 	$action = isset($_GET['action']) ? strtolower($_GET['action']) : 'cashier';
