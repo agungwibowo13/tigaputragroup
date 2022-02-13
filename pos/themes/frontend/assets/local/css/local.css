@@ -14,7 +14,7 @@ input.form-control {
 input.variative-input {
     color: #000;
     text-align: center;
-    background-color: #FFF;
+    background-color: #FFF !important;
 }
 
 #loading_screen {
