@@ -15,7 +15,8 @@
 				$model->username = $_POST['User']['username'];
 				$model->password = $_POST['User']['password'];
 				if($model->validateLogin()) {
-					$this->redirect('default/cashier');
+					// $this->redirect('default/cashier');
+					$this->redirect('admin');
 				} else {
 					Snl::app()->setFlashMessage('Username atau password salah.', 'danger');
 				}
