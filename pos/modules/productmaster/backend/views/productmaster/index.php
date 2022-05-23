@@ -54,12 +54,12 @@
                 name: "price",
                 type: "text",
                 align: "right",
-            }, {
+            }, /*{
                 title: "Harga Grosir",
                 name: "grosir",
                 type: "text",
                 align: "right",
-            }, {
+            }, */{
                 title: "Margin",
                 name: "margin_percentage",
                 type: "text",
