@@ -65,6 +65,11 @@
                 type: "text",
                 align: "right",
             }, {
+                title: "Pembulatan",
+                name: "rounded_price",
+                type: "text",
+                align: "right",
+            }, {
                 title: "Keterangan",
                 name: "remarks",
                 type: "text",

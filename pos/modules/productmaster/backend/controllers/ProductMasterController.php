@@ -141,6 +141,7 @@
 						'price' => Snl::app()->formatPrice($product->price),
 						'grosir' => Snl::app()->formatPrice($product->grosir),
 						'margin_percentage' => $margin_percentage,
+						'rounded_price' => $product->rounded_price,
 						'remarks' => $product->remarks,
 						'updated_on' => Snl::app()->dateTimeFormat($product->updated_on),
 						'updated_by' => $product->updated_by,
