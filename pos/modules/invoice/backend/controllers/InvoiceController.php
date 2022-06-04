@@ -51,6 +51,27 @@
 			$this->redirect('admin/invoice/index');
 		}
 
+
+		public function flushInvoice() {
+			Invoice::model()->updateByAttribute(array(
+				'update' 	=> 'is_deleted = 1',
+				'condition' => '1=1'
+			));
+
+			Snl::app()->setFlashMessage('Invoices has been deleted!', 'danger');
+			$this->redirect('admin/invoice/index');
+		}
+
+		public function restoreInvoice() {
+			Invoice::model()->updateByAttribute(array(
+				'update' 	=> 'is_deleted = 0',
+				'condition' => '1=1'
+			));
+
+			Snl::app()->setFlashMessage('Invoices has been restored!', 'danger');
+			$this->redirect('admin/invoice/index');
+		}
+
 		// All ajax function
 		public function search() {
 			$gets = isset($_GET) ? $_GET : array();
